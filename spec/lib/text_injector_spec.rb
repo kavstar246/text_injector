@@ -13,7 +13,7 @@ describe TextInjector do
     TextInjector.new(
       :mute => true,
       :file => @file,
-      :temp_file => @temp_file,
+      :tmp_file => @tmp_file,
       :identifier => @identifier,
       :content => @content
     )
@@ -67,11 +67,10 @@ EOL
     end
 
     it "should create temp file" do
-      @temp_file = true
+      @tmp_file = true
       injector.run
-      temp_file = @file + ".tmp"
-      File.exist?(temp_file).should be_true
-      FileUtils.rm_f(temp_file)
+      File.exist?(injector.tmp_path).should be_true
+      FileUtils.rm_f(injector.tmp_path)
     end
   end
 end

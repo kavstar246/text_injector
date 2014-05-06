@@ -24,6 +24,10 @@ class TextInjector
     puts msg unless @options[:mute]
   end
 
+  def tmp_path
+    "#{@file}.tmp"
+  end
+
 protected
 
   def default_identifier
@@ -41,15 +45,11 @@ protected
     @current_file = results
   end
 
-  def tmp_path
-    "#{@file}.tmp"
-  end
-
   def write_file(contents)
     File.open(tmp_path, 'w') do |file|
       file.write(contents)
     end
-    if @options[:temp_file]
+    if @options[:tmp_file]
       say "Tmp file written to #{tmp_path}"
     else
       say "Updated #{@file}"
