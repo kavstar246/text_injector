@@ -28,12 +28,7 @@ injector = TextInjector.new(
   :content => "added content"
 )
 injector.run # first run
-
-injector = TextInjector.new(
-  :identifier => "custom-id",
-  :file => "/tmp/test.txt",
-  :content => "updated content"
-)
+injector.content = "updated content"
 injector.run # second run
 </pre>
 
