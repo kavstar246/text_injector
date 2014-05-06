@@ -42,15 +42,15 @@ protected
   end
 
   def tmp_path
-    "#{@file}.#{Process.pid}.tmp"
+    "#{@file}.tmp"
   end
 
   def write_file(contents)
     File.open(tmp_path, 'w') do |file|
       file.write(contents)
     end
-    if @options[:noop]
-      say "Tmp file written to #{tmp}"
+    if @options[:temp_file]
+      say "Tmp file written to #{tmp_path}"
     else
       say "Updated #{@file}"
       FileUtils.mv(tmp_path, @file)

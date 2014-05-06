@@ -13,6 +13,7 @@ describe TextInjector do
     TextInjector.new(
       :mute => true,
       :file => @file,
+      :temp_file => @temp_file,
       :identifier => @identifier,
       :content => @content
     )
@@ -63,6 +64,14 @@ test file
 added content
 # End TextInjector marker for custom-id
 EOL
+    end
+
+    it "should create temp file" do
+      @temp_file = true
+      injector.run
+      temp_file = @file + ".tmp"
+      File.exist?(temp_file).should be_true
+      FileUtils.rm_f(temp_file)
     end
   end
 end
