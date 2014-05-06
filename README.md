@@ -34,7 +34,7 @@ injector = TextInjector.new(
 injector.run # second run
 </pre>
 
-Before:
+Starting /tmp/test.txt file:
 
 <pre>
 test file
@@ -54,9 +54,10 @@ After second run:
 
 <pre>
 test file
-# Begin TextInjector marker for
+
+# Begin TextInjector marker for custom-id
 updated content
-# End TextInjector marker for
+# End TextInjector marker for custom-id
 </pre>
 
 
