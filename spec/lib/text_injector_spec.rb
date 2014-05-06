@@ -35,12 +35,7 @@ describe TextInjector do
       data = IO.read(@file)
       data.should include('added content')
 
-      injector = TextInjector.new(
-        :mute => true,
-        :file => @file,
-        :identifier => @identifier,
-        :content => "updated content"
-      )
+      injector.content = "updated content"
       injector.run
       data = IO.read(@file)
       data.should_not include("added content")
