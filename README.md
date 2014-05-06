@@ -20,12 +20,14 @@ Or install it yourself as:
 
 <pre>
 injector = TextInjector.new(
+  :identifier => "custom-id",
   :file => "/tmp/test.txt",
   :content => "added content"
 )
 injector.run # first run
 
 injector = TextInjector.new(
+  :identifier => "custom-id",
   :file => "/tmp/test.txt",
   :content => "updated content"
 )
@@ -42,9 +44,10 @@ After first run:
 
 <pre>
 test file
-# Begin TextInjector marker for
+
+# Begin TextInjector marker for custom-id
 added content
-# End TextInjector marker for
+# End TextInjector marker for custom-id
 </pre>
 
 After second run:

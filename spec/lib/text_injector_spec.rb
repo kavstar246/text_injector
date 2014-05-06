@@ -60,6 +60,7 @@ describe TextInjector do
       data = IO.read(@file)
       data.should match(/Begin TextInjector marker for custom-id/)
       data.should match(/End TextInjector marker for custom-id/)
+      puts data if ENV['DEBUG']
       data.should == <<-EOL
 test file
 
