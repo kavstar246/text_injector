@@ -21,6 +21,7 @@ Or install it yourself as:
 ## Usage
 
 <pre>
+require 'text_injector'
 injector = TextInjector.new(
   :identifier => "custom-id",
   :file => "/tmp/test.txt",
