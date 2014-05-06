@@ -1,5 +1,7 @@
 # Text Injector
 
+[![Build Status](https://travis-ci.org/tongueroo/text_injector.svg?branch=master)](https://travis-ci.org/tongueroo/text_injector)
+
 Injects text to a file with markers around the text so it can update it again.
 
 ## Installation
