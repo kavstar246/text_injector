@@ -24,9 +24,9 @@ describe TextInjector do
       @file = "tmp/new-file.txt"
       injector.run
       data = IO.read(@file)
-      data.should include "added content"
-      data.should match(/Begin TextInjector marker for/)
-      data.should match(/End TextInjector marker for/)
+      expect(data).to include "added content"
+      expect(data).to match(/Begin TextInjector marker for/)
+      expect(data).to match(/End TextInjector marker for/)
     end
   end
 
@@ -34,30 +34,30 @@ describe TextInjector do
     it "should update text" do
       injector.run
       data = IO.read(@file)
-      data.should include('added content')
+      expect(data).to include('added content')
 
       injector.content = "updated content"
       injector.run
       data = IO.read(@file)
-      data.should_not include("added content")
-      data.should include("updated content")
+      expect(data).not_to include("added content")
+      expect(data).to include("updated content")
     end
 
     it "should include markers" do
       injector.run
       data = IO.read(@file)
-      data.should match(/Begin TextInjector marker for/)
-      data.should match(/End TextInjector marker for/)
+      expect(data).to match(/Begin TextInjector marker for/)
+      expect(data).to match(/End TextInjector marker for/)
     end
 
     it "should use custom-id for markers" do
       @identifier = "custom-id"
       injector.run
       data = IO.read(@file)
-      data.should match(/Begin TextInjector marker for custom-id/)
-      data.should match(/End TextInjector marker for custom-id/)
+      expect(data).to match(/Begin TextInjector marker for custom-id/)
+      expect(data).to match(/End TextInjector marker for custom-id/)
       puts data if ENV['DEBUG']
-      data.should == <<-EOL
+      expect(data).to eq <<-EOL
 test file
 
 # Begin TextInjector marker for custom-id
@@ -69,7 +69,7 @@ EOL
     it "should create temp file" do
       @tmp_file = true
       injector.run
-      File.exist?(injector.tmp_path).should be_true
+      expect(File.exist?(injector.tmp_path)).to be(true)
       FileUtils.rm_f(injector.tmp_path)
     end
   end
